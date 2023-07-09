@@ -1,0 +1,41 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: "lior"
+  description: "lior test app"
+  annotations:
+    argocd/app-name: lior-dev
+    backstage.io/kubernetes-id: lior
+    backstage.io/kubernetes-namespace: lior-dev
+    janus-idp.io/tekton-enabled : 'true'
+    github.com/project-slug: liorjanus/lior
+    quay.io/repository-slug: "liorjanus/lior"
+    backstage.io/techdocs-ref: dir:.
+  tags:
+    - java
+    - quarkus
+  links:
+    - url: https://devspaces.apps.cluster-cl4w8.cl4w8.sandbox526.opentlc.com/#https://github.com/liorjanus/lior?che-editor=che-incubator/che-code/insiders&devfilePath=.devfile-vscode.yaml
+      title: OpenShift Dev Spaces (VS Code)
+      icon: web
+    - url: https://devspaces.apps.cluster-cl4w8.cl4w8.sandbox526.opentlc.com/#https://github.com/liorjanus/lior?che-editor=che-incubator/che-idea/latest&devfilePath=.devfile-intellij.yaml
+      title: OpenShift Dev Spaces (JetBrains IntelliJ)
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: "group:default/lior"
+  providesApis:
+    - "lior"
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: "lior"
+  description: "lior test app"
+spec:
+  type: openapi
+  lifecycle: production
+  owner: "group:default/lior"
+  definition:
+    $text: ./openapi.yaml
