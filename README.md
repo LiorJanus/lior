@@ -1,6 +1,6 @@
 # lior
 
-lior test app
+lior test app for maccabi healthcare demo
 
 ## Running the application in dev mode
 
